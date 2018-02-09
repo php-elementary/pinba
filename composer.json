@@ -1,5 +1,5 @@
 {
-    "name":         "elementary/json-api",
+    "name":         "elementary/pinba",
     "description":  "inbaClient class provides simple interface that allows you to construct arbitrary Pinba data packets in PHP. .",
     "license":      "MIT",
     "authors": [

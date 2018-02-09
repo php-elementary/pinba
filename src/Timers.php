@@ -82,7 +82,7 @@ class Timers
      */
     protected function getTimer($key)
     {
-        if ($this->isExists($key)) {
+        if (!$this->isExists($key)) {
             throw new OutOfRangeException('Timer not found: ' . $key);
         }
 
