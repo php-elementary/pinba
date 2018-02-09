@@ -1,0 +1,25 @@
+{
+    "name":         "elementary/json-api",
+    "description":  "inbaClient class provides simple interface that allows you to construct arbitrary Pinba data packets in PHP. .",
+    "license":      "MIT",
+    "authors": [
+        {
+            "name":  "Artiom Vendelev",
+            "email": "artiom@vendelev.ru",
+            "role":  "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "elementary\\monitoring\\": "src\\"
+        }
+    },
+    "require": {
+        "php": ">=5.6",
+        "elementary/singleton": "^1.0.0"
+    },
+    "require-dev": {
+        "misterion/pinba-phpdoc": "^1.0@dev",
+        "codeception/codeception": "^2.3"
+    }
+}
