@@ -97,7 +97,9 @@ class Timers
      */
     protected function setTimer($key, $value)
     {
-        $this->timers[$key] = $value;
+        if ($value !== null) {
+            $this->timers[$key] = $value;
+        }
 
         return $this;
     }
