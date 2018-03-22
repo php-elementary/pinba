@@ -16,7 +16,7 @@
     },
     "require": {
         "php": ">=5.6",
-        "elementary/singleton": "^1.0.0"
+        "elementary/singleton": "^1.1"
     },
     "require-dev": {
         "misterion/pinba-phpdoc": "^1.0@dev",

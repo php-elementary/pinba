@@ -28,6 +28,21 @@ class Pinba
     }
 
     /**
+     * @param array $tags
+     * @param float $value
+     *
+     * @return bool|resource
+     */
+    public function timerAdd(array $tags, $value)
+    {
+        if ($this->isEnabled()) {
+            return pinba_timer_add($tags, $value);
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * @param resource $timer
      *
      * @return bool
