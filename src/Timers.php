@@ -15,6 +15,19 @@ class Timers implements SingletonInterface
     protected $timers = [];
 
     /**
+     * @param array $tags Array of tags and their values in the form of "tag" => "value". Cannot contain numeric indexes for obvious reasons.
+     * @param int   $value
+     *
+     * @return $this
+     */
+    public function add(array $tags=[], $value=0)
+    {
+        $this->pinba()->timerAdd($tags, $value);
+
+        return $this;
+    }
+
+    /**
      * @param string $key The internal key is not sent to the Pinba server.
      * @param array  $tags Array of tags and their values in the form of "tag" => "value". Cannot contain numeric indexes for obvious reasons.
      *
@@ -99,7 +112,9 @@ class Timers implements SingletonInterface
      */
     protected function setTimer($key, $value)
     {
-        $this->timers[$key] = $value;
+        if ($value !== null) {
+            $this->timers[$key] = $value;
+        }
 
         return $this;
     }
