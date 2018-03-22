@@ -2,11 +2,12 @@
 
 namespace elementary\monitoring;
 
+use elementary\core\Singleton\SingletonInterface;
 use elementary\core\Singleton\SingletonTrait;
-use InvalidArgumentException;
-use OutOfRangeException;
+use elementary\monitoring\exceptions\TimerExistException;
+use elementary\monitoring\exceptions\TimerNotFoundException;
 
-class Timers
+class Timers implements SingletonInterface
 {
     use SingletonTrait;
 
@@ -31,11 +32,12 @@ class Timers
      * @param array  $tags Array of tags and their values in the form of "tag" => "value". Cannot contain numeric indexes for obvious reasons.
      *
      * @return $this
+     * @throws TimerExistException
      */
     public function start($key, array $tags=[])
     {
         if ($this->isExists($key)) {
-            throw new InvalidArgumentException('Timer is allready exists: '. $key);
+            throw new TimerExistException('The Timer is allready started: '. $key);
         }
 
         $this->setTimer($key, $this->pinba()->timerStart($tags));
@@ -91,12 +93,12 @@ class Timers
      * @param string $key
      *
      * @return resource
-     * @throws OutOfRangeException
+     * @throws TimerNotFoundException
      */
     protected function getTimer($key)
     {
         if (!$this->isExists($key)) {
-            throw new OutOfRangeException('Timer not found: ' . $key);
+            throw new TimerNotFoundException('Timer not found: ' . $key);
         }
 
         return $this->timers[$key];
