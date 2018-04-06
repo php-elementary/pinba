@@ -112,9 +112,7 @@ class Timers implements SingletonInterface
      */
     protected function setTimer($key, $value)
     {
-        if ($value !== null) {
-            $this->timers[$key] = $value;
-        }
+        $this->timers[$key] = $value;
 
         return $this;
     }
